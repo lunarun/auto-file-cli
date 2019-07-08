@@ -21,8 +21,6 @@ And auto-file will be installed globally to your system path.
 ### Usage
 
 ```
-npm install
-
 // default dir is './src/pages'
 auto-file -p
 
@@ -32,5 +30,3 @@ auto-file -p --path [value]
 ```
 
 #### The package will be improved with custom template function.
-
-
