@@ -1,0 +1,26 @@
+{
+  "name": "auto-file",
+  "version": "1.0.8",
+  "description": "generate file folder and file automatically",
+  "main": "bin/index.js",
+  "keywords": [
+    "vue",
+    "auto",
+    "file",
+    "file folder",
+    "auto generate file folder",
+    "auto generate file"
+  ],
+  "bin": {
+    "auto-file": "bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lunarun",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^2.20.0"
+  }
+}
