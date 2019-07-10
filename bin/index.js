@@ -1,57 +1,43 @@
 #!/usr/bin/env node
 const program = require('commander');
 const inquirer = require('inquirer');
-const { createPage } = require('../lib/createPage');
 const list = require('../lib/list.js'); 
-const add = require('../lib/add-template.js');
+const add = require('../lib/add.js');
+const remove = require('../lib/remove.js');
+const { listQuestions } = require('../lib/meta.js');
 
-const choices = [
-  "Install a template generator",
-  "List all templates",
-  "Get me out of here!",
-];
-const questions = [
-  {
-    type: 'list',
-    name: 'want',
-    message: 'What would you like to do?',
-    choices: [
-      new inquirer.Separator(),
-      ...choices,
-      new inquirer.Separator()
-    ]
-  }
-];
+const CHOICES = {
+  ADD: "Add a template generator",
+  LIST: "List all templates",
+  REMOVE: "Delete template",
+  EXIT: "Get me out of here!",
+};
 
-program.version(require('../package').version, '-v, --version')
+program.version(require('../package.json').version, '-v, --version')
   .usage('<command> [options]');
 
 program.option('-p, --page', 'create page file folder in pages dir')
   .option('--path [value]', 'create file in the dir');
 
-program.command('list')
-  .description('display all templates')
-  .action(list);
+// program.command('list')
+//   .description('display all templates')
+//   .action(list);
 
-program.command('add')
-  .description('add template')
-  .action(add);
+// program.command('add')
+//   .description('add template')
+//   .action(add);
 
 program.parse(process.argv);
 
-const targetPath = program.path;
-if (program.page) {
-  createPage(targetPath);
-} else {
-  inquirer.prompt(questions).then(data => {
-    if (data.want === choices[0]) {
-      add();
-    } else if (data.want === choices[1]) {
-      list();
-    } else {
-      process.exit();
-    }
-  });
-  // errorLog('unknow command');
-  // cusLog('for example: node generate-cli/cli.js -p \n');
-}
+inquirer.prompt(listQuestions).then(data => {
+  if (data.want === CHOICES.ADD) {
+    add();
+  } else if (data.want === CHOICES.LIST) {
+    list();
+  } else if (data.want === CHOICES.REMOVE) {
+    const template = program.args[0];
+    remove();
+  } else {
+    process.exit();
+  }
+});

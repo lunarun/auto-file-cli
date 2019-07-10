@@ -1,19 +1,20 @@
+#!/usr/bin/env node
 const program = require('commander');
 const chalk = require('chalk');
 const path = require('path');
 const tplJson = require('../template/template.json');
 const errorLog = error => console.log(chalk.red.bold(`${error}`));
-const generateFile = require('../lib/generate.js');
+const generateTemplate = require('../lib/generate.js');
 
 program.usage('<template-name>');
-
 program.on('--help', function() {
   console.log('')
   errorLog('Examples:');
-  console.log('  auto-init template-name file-folder-name \n');
+  console.log('  a-init template-name \n');
 });
-
 program.parse(process.argv);
+
+// 如果没有输入任何参数，输出help
 if (program.args.length < 1) {
   program.help();
 }
@@ -26,9 +27,13 @@ if (!tplJson[template]) {
   return;
 }
 // || dir.indexOf('/') > -1
-if (!dir) {
-  console.log(errorLog('please input file folder name'));
-  return;
-}
+// if (!dir) {
+//   console.log(errorLog('please input file folder name'));
+//   return;
+// }
 
-generateFile(template, dir);
+const addDirective = (directive) => {
+  require('./command');
+};
+
+generateTemplate(template, dir, addDirective);

@@ -1,6 +1,6 @@
 {
-  "name": "auto-file",
-  "version": "1.0.8",
+  "name": "auto-file-cli",
+  "version": "1.0.5",
   "description": "generate file folder and file automatically",
   "main": "bin/index.js",
   "keywords": [
@@ -12,8 +12,9 @@
     "auto generate file"
   ],
   "bin": {
-    "auto-file": "bin/index.js",
-    "auto-init": "bin/init"
+    "a-file": "bin/index.js",
+    "a-init": "bin/init.js",
+    "a-gene": "bin/command.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,6 +25,11 @@
     "chalk": "^2.4.2",
     "commander": "^2.20.0",
     "inquirer": "^6.4.1",
-    "ora": "^3.4.0"
+    "metalsmith": "^2.3.0",
+    "ora": "^3.4.0",
+    "rmfr": "^2.0.0"
+  },
+  "devDependencies": {
+    "auto-file-h5": "^1.0.4"
   }
 }

@@ -1,17 +1,1 @@
-{
-  "temp1": {
-    "name": "temp-demo",
-    "desc": "description demo",
-    "npm": "npm-installed"
-  },
-  "tpl-test1": {
-    "name": "tpl-test1",
-    "desc": "desct",
-    "npm": "tpl-test1"
-  },
-  "tpl-1": {
-    "name": "tpl-1",
-    "desc": "project name",
-    "npm": "npm-name"
-  }
-}
+{}
